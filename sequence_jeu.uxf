@@ -1,0 +1,44 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLGeneric</id><coordinates><x>400</x><y>110</y><w>100</w><h>30</h></coordinates><panel_attributes>_:Joueur_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>600</x><y>110</y><w>100</w><h>30</h></coordinates><panel_attributes>Démineur</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>130</y><w>30</w><h>630</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;610</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>130</y><w>30</w><h>630</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;610</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>160</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+clique droit</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>310</x><y>160</y><w>610</w><h>450</h></coordinates><panel_attributes>alt
+--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>430</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+clique gauche</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>260</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+la case est vide</panel_attributes><additional_attributes>10;20;210;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>390</x><y>260</y><w>320</w><h>130</h></coordinates><panel_attributes>alt
+--
+
+-.
+
+
+-.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>300</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+la case contient une mine</panel_attributes><additional_attributes>10;20;210;20</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>340</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+la case contient un chiffre</panel_attributes><additional_attributes>10;20;210;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>390</x><y>470</y><w>320</w><h>110</h></coordinates><panel_attributes>alt
+--
+
+
+-.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>480</y><w>230</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+place un drapeau
+</panel_attributes><additional_attributes>10;20;210;20</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>540</y><w>230</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+retire le drapeau
+</panel_attributes><additional_attributes>10;20;210;20</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>190</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+lancer le timer</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>800</x><y>110</y><w>100</w><h>30</h></coordinates><panel_attributes>Timer</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>130</y><w>30</w><h>630</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;610</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>210</y><w>430</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+affiche le temps écoulé</panel_attributes><additional_attributes>10;20;410;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>330</x><y>190</y><w>560</w><h>210</h></coordinates><panel_attributes>Parallel
+--
+
+
+-.</panel_attributes><additional_attributes></additional_attributes></element></diagram>
