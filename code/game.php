@@ -17,7 +17,7 @@
     <div class="flex justify-center items-center my-8">
         <table class="table-auto border-collapse bg-gray-700">
             <?php
-            $difficulty = "hard";
+            $difficulty = "easy";
 
             if ($difficulty == "easy"){
                 $row = 9;
