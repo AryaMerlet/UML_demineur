@@ -33,3 +33,21 @@ body{
 h1 {
     font-family: 'minecraft';
 }
+.option_container {
+    position: absolute;
+    z-index: -100;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../medias/textures/dirt.png');
+    background-repeat: repeat;
+    background-size: 6.25%;
+    filter: brightness(0.6);
+}
+.option_nav {
+    width: 100vw;
+    height: 15vh;
+    background-image: url('../medias/textures/dirt.png');
+    background-repeat: repeat;
+    background-size: 6.25%;
+    padding: 10px;
+}
