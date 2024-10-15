@@ -19,7 +19,7 @@
     <div class="flex justify-center items-center my-8">
         <table class="table-auto border-collapse bg-gray-700">
             <?php
-            $difficulty = "hardcore";
+            $difficulty = "medium";
 
             if ($difficulty == "easy") {
                 $row = 9;
@@ -37,12 +37,6 @@
                 $row = 16;
                 $col = 30;
                 $mines = 99;
-            }
-
-            if ($difficulty == "hardcore") {
-                $row = 24;
-                $col = 30;
-                $mines = 195;
             }
 
             echo '<div id="row" class="hidden">
