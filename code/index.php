@@ -14,11 +14,10 @@
         <h1 class="text-6xl font-bold mb-8">DES MINEURS</h1>
 
         <div class="flex flex-col space-y-4">
-            <a href="#" class="minecraft-btn mx-auto w-64 text-center text-white truncate p-1 pl-20 pr-20 border-2 border-b-4 hover:text-yellow-200">Jouer</a>
+            <a href="game.php" class="minecraft-btn mx-auto w-64 text-center text-white truncate p-1 pl-20 pr-20 border-2 border-b-4 hover:text-yellow-200">Jouer</a>
             <a href="#" class="minecraft-btn mx-auto w-64 text-center text-white truncate p-1 pl-20 pr-20 border-2 border-b-4 hover:text-yellow-200">Option</a>
             <a href="https://felis-maillard.agfagoofay.fr/" target="_blank" class="minecraft-btn mx-auto w-64 text-center text-white truncate p-1 pl-20 pr-20 border-2 border-b-4 hover:text-yellow-200">A propos</a>
         </div>
 
 </body>
 </html>
-
