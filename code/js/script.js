@@ -100,7 +100,7 @@ function RefreshBombCount() {
     });
 
     var bombCounter = document.getElementById("bomb-counter");
-    bombCounter.textContent = totalMines - revealedMines - correctFlags;
+    bombCounter.textContent = totalMines - revealedMines - flaggedCells;
     if (totalMines - revealedMines - correctFlags === 0) {
         alert("Victory!");
     }
