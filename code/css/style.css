@@ -5,7 +5,12 @@
     font-family: minecraft;
     src: url('../fonts/Minecraft.ttf');
 }
-
+button {
+    cursor: url('../medias/pioche.png') 0 16, auto;
+}
+button:hover {
+    cursor: url('../medias/pioche.png') 0 16, auto;
+}
 .bg-blur {
     background-image: url('../medias/background.jpg');
     background-size: cover;
@@ -18,8 +23,8 @@
 	font-family: 'minecraft';
   	border-color: #AAA #565656 #565656 #AAA;
   	outline: 2px solid #000;
-    cursor: url('../medias/pioche.png'), auto;
-}   
+      cursor: url('../medias/pioche.png') 0 16, auto;
+    }   
   
 .minecraft-btn:hover {
     background-image: url('../medias/Bouton_minecraft_hover.png');
@@ -27,24 +32,14 @@
 }
 
 body{
-    cursor: url('../medias/pioche.png'), auto;
+    cursor: url('../medias/pioche.png') 0 16, auto;
 }
 
 h1 {
     font-family: 'minecraft';
 }
 
-.case-solid{
-    background-color: #565656;
-}
 
-.case-solid:hover{
-    background-color: #737272;
-}
-
-.case-break{
-    background-color: #000;
-}
 
 
 
@@ -78,6 +73,7 @@ h1 {
     background-size: 6.25%;
     padding: 10px;
 }
+
 .block-1 {
     background-image: url('../medias/textures/stone.png');
     background-size: cover;
@@ -91,6 +87,23 @@ h1 {
     background-size: cover;
 }
 .block-4 {
-    background-image: url('../medias/textures/diorite.png');
+    background-image: url('../medias/textures/andesite.png');
     background-size: cover;
+}
+
+
+.case-solid{
+    background-color: #565656;
+}
+
+.case-solid:hover{
+    background-color: #737272;
+    border: white 1px solid;
+    cursor: url('../medias/pioche.png') 0 16, auto;
+}
+
+.case-break{
+    background-image: url('../medias/textures/bedrock.png');
+    background-size: cover;
+    filter: brightness(0.6);
 }
