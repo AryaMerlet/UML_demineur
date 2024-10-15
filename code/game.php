@@ -43,6 +43,16 @@
                 $mines = 195;
             }
 
+            echo '<div id="row" class="hidden">
+            ' . $row . '
+            </div>
+            <div id="col" class="hidden">
+            ' . $col . '
+            </div>
+            <div id="mines" class="hidden">
+            ' . $mines . '
+            </div>';
+
             for ($r = 0; $r < $row; $r++) {
                 echo "<tr>";
                 for ($c = 0; $c < $col; $c++) {
