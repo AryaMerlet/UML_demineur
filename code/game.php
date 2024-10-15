@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/script.js"></script>
     <title>Partie en cours - Démineur</title>
 </head>
 <body class="bg-blur h-screen flex flex-col justify-between items-center">
@@ -36,11 +37,17 @@
                 $mines = 99;
             }
 
-            for ($i = 0; $i < $row; $i++) {
+            if ($difficulty == "hardcore"){
+                $row = 24;
+                $col = 30;
+                $mines = 195;
+            }
+
+            for ($r = 0; $r < $row; $r++) {
                 echo "<tr>";
-                for ($u = 0; $u < $col; $u++) {
+                for ($c = 0; $c < $col; $c++) {
                     echo '<td class="border border-gray-500 w-7 h-4 text-center text-white">';
-                    echo '<button class="w-full h-full bg-gray-600 hover:bg-gray-500"></button>';
+                    echo '<button id="' . $r . ';' . $c . '" class="case-solid w-full h-full" onclick="CaseBreak(' . $r . ',' . $c . ')"></button>';
                     echo "</td>";
                 }
                 echo "</tr>";
