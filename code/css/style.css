@@ -45,3 +45,52 @@ h1 {
 .case-break{
     background-color: #000;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.option_container {
+    position: absolute;
+    z-index: -100;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../medias/textures/dirt.png');
+    background-repeat: repeat;
+    background-size: 6.25%;
+    filter: brightness(0.6);
+}
+.option_nav {
+    width: 100vw;
+    height: 15vh;
+    background-image: url('../medias/textures/dirt.png');
+    background-repeat: repeat;
+    background-size: 6.25%;
+    padding: 10px;
+}
+.block-1 {
+    background-image: url('../medias/textures/stone.png');
+    background-size: cover;
+}
+.block-2 {
+    background-image: url('../medias/textures/cobblestone.png');
+    background-size: cover;
+}
+.block-3 {
+    background-image: url('../medias/textures/andesite.png');
+    background-size: cover;
+}
+.block-4 {
+    background-image: url('../medias/textures/diorite.png');
+    background-size: cover;
+}
