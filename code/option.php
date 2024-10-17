@@ -2,7 +2,7 @@
 // options_save.php
 $options = file_get_contents('option.txt');
 $difficulty = json_decode($options, true)['difficulty'] ?? 'Easy';
-$lives = json_decode($options, true)['lives'] ?? 0;
+$lives = json_decode($options, true)['lives'] ?? 1;
 
 ?>
 <!DOCTYPE html>
@@ -58,7 +58,7 @@ document
   .querySelector("#lives-btn")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    const lives = [0, 1, 2, 3, 4, 5, 10];
+    const lives = [ 1, 2, 3, 4, 5, 10];
     let currentLives = parseInt(this.textContent.split(" : ")[1]);
     let nextIndex = (lives.indexOf(currentLives) + 1) % lives.length;
     this.textContent = `Nombre de vie : ${lives[nextIndex]}`;
