@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function CaseBreak(r, c, event) {
-    if (is_init == false) {
-        Initialiser(r, c);
-      }
+  if (is_init == false) {
+    Initialiser(r, c);
+  }
   var caseClicked = document.getElementById(r + ";" + c);
 
   if (event.button === 2) {
@@ -46,7 +46,19 @@ function CaseBreak(r, c, event) {
       if (caseClicked.classList.contains(liste_cases_nombre[i])) {
       }
       if (i === liste_cases_nombre.length - 1) {
-        revealneighbours(r, c);
+        if (
+          !caseClicked.classList.contains("nb-mine-1") &&
+          !caseClicked.classList.contains("nb-mine-2") &&
+          !caseClicked.classList.contains("nb-mine-3") &&
+          !caseClicked.classList.contains("nb-mine-4") &&
+          !caseClicked.classList.contains("nb-mine-5") &&
+          !caseClicked.classList.contains("nb-mine-6") &&
+          !caseClicked.classList.contains("nb-mine-7") &&
+          !caseClicked.classList.contains("nb-mine-8") &&
+          !caseClicked.classList.contains("case-mine")
+        ) {
+          revealneighbours(r, c);
+        }
       }
     }
     if (caseClicked.classList.contains("case-mine")) {
@@ -58,6 +70,7 @@ function CaseBreak(r, c, event) {
       caseClicked.classList.replace("case-solid", "case-break-bomb");
       var audio = new Audio("medias/sounds/tnt-explosion.mp3");
       audio.play();
+      playExplosionAnimation(r, c)
     } else {
       random_audio = Math.random(1, 4);
       random_audio = Math.floor(Math.random() * 4) + 1;
@@ -79,75 +92,76 @@ function CaseBreak(r, c, event) {
     caseClicked.removeAttribute("onclick");
 
     console.log(r + ";" + c);
-    
   }
   RefreshBombCount();
 }
 function RefreshBombCount() {
-    var totalMines = document.querySelectorAll(".case-mine").length;
-    var revealedMines = document.querySelectorAll(".case-break-bomb").length;
-    var flaggedCells = document.querySelectorAll("[class*='block-drapeau-']").length;
-    var correctFlags = 0;
+  var totalMines = document.querySelectorAll(".case-mine").length;
+  var revealedMines = document.querySelectorAll(".case-break-bomb").length;
+  var flaggedCells = document.querySelectorAll(
+    "[class*='block-drapeau-']"
+  ).length;
+  var correctFlags = 0;
 
-    // Count only flags that are on mines and not revealed
-    document.querySelectorAll(".case-mine").forEach(function (mine) {
-        if (mine.classList.contains("block-drapeau-1") ||
-            mine.classList.contains("block-drapeau-2") ||
-            mine.classList.contains("block-drapeau-3") ||
-            mine.classList.contains("block-drapeau-4")) {
-            correctFlags++;
-        }
-    });
-
-    var bombCounter = document.getElementById("bomb-counter");
-    bombCounter.textContent = totalMines - revealedMines - flaggedCells;
-    if (totalMines - revealedMines - correctFlags === 0) {
-        alert("Victory!");
+  // Count only flags that are on mines and not revealed
+  document.querySelectorAll(".case-mine").forEach(function (mine) {
+    if (
+      mine.classList.contains("block-drapeau-1") ||
+      mine.classList.contains("block-drapeau-2") ||
+      mine.classList.contains("block-drapeau-3") ||
+      mine.classList.contains("block-drapeau-4")
+    ) {
+      correctFlags++;
     }
+  });
+
+  var bombCounter = document.getElementById("bomb-counter");
+  bombCounter.textContent = totalMines - revealedMines - flaggedCells;
+  if (totalMines - revealedMines - correctFlags === 0) {
+    victoire();
+  }
 }
 function revealneighbours(r, c) {
-    var directions = [
-        [-1, -1],
-        [-1, 0],
-        [-1, 1],
-        [0, -1],
-        [0, 1],
-        [1, -1],
-        [1, 0],
-        [1, 1],
-    ];
+  var directions = [
+    [-1, 0],
+    [0, -1],
+    [0, 1],
+    [1, 0],
+  ];
 
-    for (var i = 0; i < directions.length; i++) {
-        var newRow = r + directions[i][0];
-        var newCol = c + directions[i][1];
-        var neighbour = document.getElementById(newRow + ";" + newCol);
+  for (var i = 0; i < directions.length; i++) {
+    var newRow = r + directions[i][0];
+    var newCol = c + directions[i][1];
+    var neighbour = document.getElementById(newRow + ";" + newCol);
 
-        if (
-            newRow >= 0 &&
-            newRow < row &&
-            newCol >= 0 &&
-            newCol < col &&
-            neighbour
-        ) {
-            // Vérifier que la case n'est pas déjà révélée et n'est pas une mine
-            if (
-                !neighbour.classList.contains("case-mine") &&
-                !neighbour.classList.contains("case-break")
-            ) {
-                // Révéler la case
-                neighbour.classList.replace("case-solid", "case-break");
-                neighbour.removeAttribute("onclick");
+    if (
+      newRow >= 0 &&
+      newRow < row &&
+      newCol >= 0 &&
+      newCol < col &&
+      neighbour
+    ) {
+      // Vérifier que la case n'est pas déjà révélée et n'est pas une mine
+      if (
+        !neighbour.classList.contains("case-mine") &&
+        !neighbour.classList.contains("case-break")
+      ) {
+        // Révéler la case
+        neighbour.classList.replace("case-solid", "case-break");
+        neighbour.removeAttribute("onclick");
 
-                // Vérifier s'il s'agit d'une case vide (sans nombre de mines autour)
-                var isNumbered = liste_cases_nombre.some((cls) => neighbour.classList.contains(cls));
-                
-                // Si la case n'est pas numérotée (pas de mines autour), révéler les voisins
-                if (!isNumbered) {
-                    revealneighbours(newRow, newCol);
-                }
-            }
+        // Vérifier s'il s'agit d'une case vide (sans nombre de mines autour)
+        var isNumbered = liste_cases_nombre.some((cls) =>
+          neighbour.classList.contains(cls)
+        );
+
+        // Si la case n'est pas numérotée (pas de mines autour), révéler les voisins
+        if (!isNumbered) {
+          revealneighbours(newRow, newCol);
         }
+      }
     }
+  }
 }
 
 function actualiserHearts() {
@@ -227,3 +241,89 @@ function Initialiser(r, c) {
   }
   is_init = true;
 }
+function playExplosionAnimation(r, c) {
+  var caseClicked = document.getElementById(r + ";" + c);
+  var frame = 1;
+  var totalFrames = 14;
+  var interval = 22; // Time between frames in milliseconds
+
+  var explosionImage = document.createElement("img");
+  explosionImage.style.position = "absolute";
+  explosionImage.style.top = (caseClicked.getBoundingClientRect().top - caseClicked.offsetHeight / 2) + "px";
+  explosionImage.style.left = (caseClicked.getBoundingClientRect().left - caseClicked.offsetWidth / 2) + "px";
+  explosionImage.style.width = (caseClicked.offsetWidth * 2) + "px";
+  explosionImage.style.height = (caseClicked.offsetHeight * 2) + "px";
+  document.body.appendChild(explosionImage);
+
+  var animationInterval = setInterval(function () {
+    if (frame > totalFrames) {
+      clearInterval(animationInterval);
+      document.body.removeChild(explosionImage); // Clear the animation
+    } else {
+      explosionImage.src = `medias/textures/explosions/explosion_${frame}.png`;
+      frame++;
+    }
+  }, interval);
+}
+
+function victoire() {
+  var victoryBox = document.createElement("div");
+  victoryBox.style.position = "fixed";
+  victoryBox.style.top = "5%";
+  victoryBox.style.right = "-100%";
+  victoryBox.style.transform = "translateY(-50%)";
+  victoryBox.style.transition = "right 1s ease-in-out";
+  victoryBox.style.backgroundImage = "url('medias/textures/victoire/title_box.png')";
+  victoryBox.style.backgroundSize = "cover";
+  victoryBox.style.padding = "20px";
+  victoryBox.style.display = "flex";
+  victoryBox.style.alignItems = "center";
+  victoryBox.style.justifyContent = "center";
+  victoryBox.style.zIndex = "1000";
+  victoryBox.style.overflow = "hidden"; // Ensure it doesn't affect page width
+
+  var trophyImage = document.createElement("img");
+  trophyImage.src = "medias/textures/victoire/trophy.png";
+  trophyImage.style.width = "50px";
+  trophyImage.style.height = "50px";
+  trophyImage.style.marginRight = "10px";
+
+  var victoryText = document.createElement("span");
+  victoryText.textContent = "Bravo! Vous avez gagné!";
+  victoryText.style.fontSize = "20px";
+  victoryText.style.color = "white";
+
+  victoryBox.appendChild(trophyImage);
+  victoryBox.appendChild(victoryText);
+  document.body.appendChild(victoryBox);
+
+  setTimeout(function () {
+    victoryBox.style.right = "0%";
+  }, 100);
+
+  // setTimeout(function () {
+  //   victoryBox.style.right = "-100%";
+  //   setTimeout(function () {
+  //     document.body.removeChild(victoryBox);
+  //   }, 1000);
+  // }, 5000);
+  function creerPaillette() {
+    const paillettesContainer = document.querySelector('.bg-blur');
+    const paillette = document.createElement('img');
+    
+    paillette.classList.add('paillette');
+    paillette.src = 'medias/textures/victoire/diamond.png'; // Replace with the path to your image
+    paillette.style.left = Math.random() * window.innerWidth + 'px';
+    paillette.style.animationDuration = Math.random() * 3 + 3 + 's'; // Between 3 and 6 seconds
+    paillettesContainer.appendChild(paillette);
+  }
+
+  // Generate the paillettes
+  const nombreDePaillettes = 1000;
+  for (let i = 0; i < nombreDePaillettes; i++) {
+    creerPaillette();
+  }
+}
+
+
+        

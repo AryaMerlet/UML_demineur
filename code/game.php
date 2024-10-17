@@ -11,7 +11,7 @@
     <title>Partie en cours - Démineur</title>
 </head>
 
-<body class="bg-blur h-screen flex flex-col justify-between items-center">
+<body class="bg-blur h-screen flex flex-col justify-between items-center overflow-hidden"></body>
 
     <!-- Titre -->
     <h1 class="text-6xl font-bold text-white mt-8">DES MINEURS</h1>

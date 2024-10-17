@@ -1,1 +1,1 @@
-{"difficulty":"Medium","lives":"10"}
+{"difficulty":"Easy","lives":"10"}
