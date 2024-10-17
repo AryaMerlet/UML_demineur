@@ -31,7 +31,7 @@
                 </div>
                 <div class="flex">
                     <img src="medias/textures/tnt.png" alt="" class="w-6 h-6 ">
-                    <div id="bomb-counter" class="text-white">0</div>
+                    <div id="bomb-counter" class="text-white ml-1">0</div>
                 </div>
             </div>
             <table class="table-auto border-collapse bg-gray-700">

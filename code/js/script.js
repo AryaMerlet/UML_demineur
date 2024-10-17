@@ -205,7 +205,16 @@ function Initialiser(r, c) {
     var randRow = Math.floor(Math.random() * row);
     var randCol = Math.floor(Math.random() * col);
 
-    if ((randRow !== r || randCol !== c) && !plateau[randRow][randCol].aMine) {
+    if ((randRow !== r || randCol !== c)&& 
+     (randRow !== r-1 || randCol !== c-1) &&
+      (randRow !== r-1 || randCol !== c) &&
+      (randRow !== r-1 || randCol !== c+1) &&
+      (randRow !== r || randCol !== c-1) &&
+      (randRow !== r || randCol !== c+1) &&
+      (randRow !== r+1 || randCol !== c-1) &&
+      (randRow !== r+1 || randCol !== c) &&
+      (randRow !== r+1 || randCol !== c+1)
+       && !plateau[randRow][randCol].aMine) {
       plateau[randRow][randCol].aMine = true;
       var cellule = document.getElementById(randRow + ";" + randCol);
       cellule.classList.add("case-mine");
@@ -319,7 +328,7 @@ function victoire() {
   }
 
   // Generate the paillettes
-  const nombreDePaillettes = 1000;
+  const nombreDePaillettes = 100;
   for (let i = 0; i < nombreDePaillettes; i++) {
     creerPaillette();
   }
