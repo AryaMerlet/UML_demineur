@@ -155,7 +155,7 @@ h1 {
 .nb-mine-1::before {
     content: "1";
     position: absolute;
-    top: 0%;
+    top: -5%;
     left: 40%;
     /* transform: translate(-50%, -50%); */
     font-family: 'minecraft';
@@ -167,7 +167,7 @@ h1 {
 .nb-mine-2::before {
     content: "2";
     position: absolute;
-    top: 0%;
+    top: -5%;
     left: 40%;
     /* transform: translate(-50%, -50%); */
     font-family: 'minecraft';
@@ -179,7 +179,7 @@ h1 {
 .nb-mine-4::before {
     content: "4";
     position: absolute;
-    top: 0%;
+    top: -5%;
     left: 40%;
     /* transform: translate(-50%, -50%); */
     font-family: 'minecraft';
@@ -191,7 +191,7 @@ h1 {
 .nb-mine-3::before {
     content: "3";
     position: absolute;
-    top: 0%;
+    top: -5%;
     left: 40%;
     /* transform: translate(-50%, -50%); */
     font-family: 'minecraft';
@@ -203,7 +203,7 @@ h1 {
 .nb-mine-5::before {
     content: "5";
     position: absolute;
-    top: 0%;
+    top: -5%;
     left: 40%;
     /* transform: translate(-50%, -50%); */
     font-family: 'minecraft';

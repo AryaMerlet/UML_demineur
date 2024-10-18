@@ -93,7 +93,7 @@
 
     <!-- Bouton Quitter -->
     <div class="mb-8">
-        <a href="index.php" class="minecraft-btn mx-auto w-64 text-center text-white truncate p-1 pl-20 pr-20 border-2 border-b-4 hover:text-yellow-200">
+        <a href="index.php" class="minecraft-btn mx-auto w-64 text-center text-white truncate p-1 pl-20 pr-20 border-2 border-b-4 hover:text-yellow-200 z-10000 ">
             Quitter
         </a>
     </div>

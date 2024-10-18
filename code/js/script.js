@@ -12,7 +12,8 @@ var row,
     "nb-mine-6",
     "nb-mine-7",
     "nb-mine-8",
-  ];
+  ],
+  desactiver_click_droit = false;
 
 document.addEventListener("DOMContentLoaded", function () {
   row = document.getElementById("row").textContent.trim();
@@ -181,7 +182,7 @@ document.addEventListener(
   function (e) {
     e.preventDefault();
     var target = e.target;
-    if (target && target.tagName === "BUTTON") {
+    if (target && target.tagName === "BUTTON" && !desactiver_click_droit) {
       var coords = target.id.split(";");
       var r = parseInt(coords[0]);
       var c = parseInt(coords[1]);
@@ -276,6 +277,10 @@ function playExplosionAnimation(r, c) {
 }
 
 function victoire() {
+  document.querySelectorAll("button").forEach(function (button) {
+    button.disabled = true;
+  });
+  desactiver_click_droit = true;
   var victoryBox = document.createElement("div");
   victoryBox.style.position = "fixed";
   victoryBox.style.top = "5%";
