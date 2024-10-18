@@ -28,20 +28,32 @@ function CaseBreak(r, c, event) {
   }
   var caseClicked = document.getElementById(r + ";" + c);
 
+  var regexDrapeau = /block-drapeau-\d/;
+
   if (event.button === 2) {
     // Right-click
-    for (var i = 1; i <= 4; i++) {
-      if (caseClicked.classList.contains("block-" + i)) {
-        caseClicked.classList.replace("block-" + i, "block-drapeau-" + i);
-        console.log("Flagged: " + r + ";" + c);
+    if (caseClicked.classList.contains("case-solid")) {
+      for (var i = 1; i <= 4; i++) {
+        if (caseClicked.classList.contains("block-" + i)) {
+          caseClicked.classList.replace("block-" + i, "block-drapeau-" + i);
+          console.log("Flagged: " + r + ";" + c);
 
-        break;
-      } else if (caseClicked.classList.contains("block-drapeau-" + i)) {
-        caseClicked.classList.replace("block-drapeau-" + i, "block-" + i);
-        break;
+          break;
+        } else if (caseClicked.classList.contains("block-drapeau-" + i)) {
+          caseClicked.classList.replace("block-drapeau-" + i, "block-" + i);
+          break;
+        }
       }
+      RefreshBombCount();
     }
-  } else if (event.button === 0) {
+  }
+
+  // Vérification si la case a un drapeau
+  if (regexDrapeau.test(caseClicked.className)) {
+    return; // Sortir de la fonction si un drapeau est présent
+  } 
+  
+  else if (event.button === 0) {
     // Left-click
     for (var i = 0; i < liste_cases_nombre.length; i++) {
       if (caseClicked.classList.contains(liste_cases_nombre[i])) {
@@ -66,12 +78,12 @@ function CaseBreak(r, c, event) {
       lives--;
       actualiserHearts();
       if (lives === 0) {
-        alert("Game Over");
+        defaite();
       }
       caseClicked.classList.replace("case-solid", "case-break-bomb");
       var audio = new Audio("medias/sounds/tnt-explosion.mp3");
       audio.play();
-      playExplosionAnimation(r, c)
+      playExplosionAnimation(r, c);
     } else {
       random_audio = Math.random(1, 4);
       random_audio = Math.floor(Math.random() * 4) + 1;
@@ -206,16 +218,18 @@ function Initialiser(r, c) {
     var randRow = Math.floor(Math.random() * row);
     var randCol = Math.floor(Math.random() * col);
 
-    if ((randRow !== r || randCol !== c)&& 
-     (randRow !== r-1 || randCol !== c-1) &&
-      (randRow !== r-1 || randCol !== c) &&
-      (randRow !== r-1 || randCol !== c+1) &&
-      (randRow !== r || randCol !== c-1) &&
-      (randRow !== r || randCol !== c+1) &&
-      (randRow !== r+1 || randCol !== c-1) &&
-      (randRow !== r+1 || randCol !== c) &&
-      (randRow !== r+1 || randCol !== c+1)
-       && !plateau[randRow][randCol].aMine) {
+    if (
+      (randRow !== r || randCol !== c) &&
+      (randRow !== r - 1 || randCol !== c - 1) &&
+      (randRow !== r - 1 || randCol !== c) &&
+      (randRow !== r - 1 || randCol !== c + 1) &&
+      (randRow !== r || randCol !== c - 1) &&
+      (randRow !== r || randCol !== c + 1) &&
+      (randRow !== r + 1 || randCol !== c - 1) &&
+      (randRow !== r + 1 || randCol !== c) &&
+      (randRow !== r + 1 || randCol !== c + 1) &&
+      !plateau[randRow][randCol].aMine
+    ) {
       plateau[randRow][randCol].aMine = true;
       var cellule = document.getElementById(randRow + ";" + randCol);
       cellule.classList.add("case-mine");
@@ -259,10 +273,16 @@ function playExplosionAnimation(r, c) {
 
   var explosionImage = document.createElement("img");
   explosionImage.style.position = "absolute";
-  explosionImage.style.top = (caseClicked.getBoundingClientRect().top - caseClicked.offsetHeight / 2) + "px";
-  explosionImage.style.left = (caseClicked.getBoundingClientRect().left - caseClicked.offsetWidth / 2) + "px";
-  explosionImage.style.width = (caseClicked.offsetWidth * 2) + "px";
-  explosionImage.style.height = (caseClicked.offsetHeight * 2) + "px";
+  explosionImage.style.top =
+    caseClicked.getBoundingClientRect().top -
+    caseClicked.offsetHeight / 2 +
+    "px";
+  explosionImage.style.left =
+    caseClicked.getBoundingClientRect().left -
+    caseClicked.offsetWidth / 2 +
+    "px";
+  explosionImage.style.width = caseClicked.offsetWidth * 2 + "px";
+  explosionImage.style.height = caseClicked.offsetHeight * 2 + "px";
   document.body.appendChild(explosionImage);
 
   var animationInterval = setInterval(function () {
@@ -287,7 +307,8 @@ function victoire() {
   victoryBox.style.right = "-100%";
   victoryBox.style.transform = "translateY(-50%)";
   victoryBox.style.transition = "right 1s ease-in-out";
-  victoryBox.style.backgroundImage = "url('medias/textures/victoire/title_box.png')";
+  victoryBox.style.backgroundImage =
+    "url('medias/textures/victoire/title_box.png')";
   victoryBox.style.backgroundSize = "cover";
   victoryBox.style.padding = "20px";
   victoryBox.style.display = "flex";
@@ -322,13 +343,13 @@ function victoire() {
   //   }, 1000);
   // }, 5000);
   function creerPaillette() {
-    const paillettesContainer = document.querySelector('.bg-blur');
-    const paillette = document.createElement('img');
-    
-    paillette.classList.add('paillette');
-    paillette.src = 'medias/textures/victoire/diamond.png'; // Replace with the path to your image
-    paillette.style.left = Math.random() * window.innerWidth + 'px';
-    paillette.style.animationDuration = Math.random() * 3 + 3 + 's'; // Between 3 and 6 seconds
+    const paillettesContainer = document.querySelector(".bg-blur");
+    const paillette = document.createElement("img");
+
+    paillette.classList.add("paillette");
+    paillette.src = "medias/textures/victoire/diamond.png"; // Replace with the path to your image
+    paillette.style.left = Math.random() * window.innerWidth + "px";
+    paillette.style.animationDuration = Math.random() * 3 + 3 + "s"; // Between 3 and 6 seconds
     paillettesContainer.appendChild(paillette);
   }
 
@@ -339,5 +360,56 @@ function victoire() {
   }
 }
 
+function defaite() {
+  // Disable all buttons
+  document.querySelectorAll("button").forEach(function (button) {
+      button.disabled = true;
+  });
+  desactiver_click_droit = true;
 
-        
+  // Create the defeat overlay
+  var defeatOverlay = document.createElement("div");
+  defeatOverlay.style.position = "fixed";
+  defeatOverlay.style.top = "0";
+  defeatOverlay.style.left = "0";
+  defeatOverlay.style.width = "100%";
+  defeatOverlay.style.height = "100%";
+  defeatOverlay.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+  defeatOverlay.style.display = "flex";
+  defeatOverlay.style.flexDirection = "column";
+  defeatOverlay.style.justifyContent = "center";
+  defeatOverlay.style.alignItems = "center";
+  defeatOverlay.style.zIndex = "1000";
+
+  // defeat message
+  var defeatMessage = document.createElement("h2");
+  defeatMessage.textContent = "Vous avez perdu !";
+  defeatMessage.style.color = "white";
+  defeatMessage.style.fontSize = "36px";
+  defeatMessage.style.marginBottom = "20px";
+  defeatMessage.style.fontFamily = "minecraft";
+
+  // replay button
+  var replayButton = document.createElement("button");
+  replayButton.textContent = "Rejouer";
+  replayButton.className = "minecraft-btn mx-auto w-64 text-center text-white truncate mb-2 p-1 pl-20 pr-20 border-2 border-b-4 hover:text-yellow-200";
+  replayButton.onclick = function() {
+      location.reload();
+  };
+
+  // quit button
+  var quitButton = document.createElement("button");
+  quitButton.textContent = "Quitter";
+  quitButton.className = "minecraft-btn mx-auto w-64 text-center text-white truncate p-1 pl-20 pr-20 border-2 border-b-4 hover:text-yellow-200";
+  quitButton.onclick = function() {
+      window.location.href = "index.php";
+  };
+
+  // Append elements to the overlay
+  defeatOverlay.appendChild(defeatMessage);
+  defeatOverlay.appendChild(replayButton);
+  defeatOverlay.appendChild(quitButton);
+
+  // Add the overlay to the body
+  document.body.appendChild(defeatOverlay);
+}

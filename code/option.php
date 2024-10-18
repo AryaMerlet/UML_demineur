@@ -58,7 +58,7 @@ document
   .querySelector("#lives-btn")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    const lives = [ 1, 2, 3, 4, 5, 10];
+    const lives = [ 1, 2, 3, 4, 5, 9];
     let currentLives = parseInt(this.textContent.split(" : ")[1]);
     let nextIndex = (lives.indexOf(currentLives) + 1) % lives.length;
     this.textContent = `Nombre de vie : ${lives[nextIndex]}`;
