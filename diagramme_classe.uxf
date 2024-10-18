@@ -1,0 +1,46 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>170</x><y>110</y><w>210</w><h>150</h></coordinates><panel_attributes>Jeu
+--
+- chronomètre : time
+- compteurDrapeaux : integer
+
+--
++ demarrerJeu()
++ finirJeu()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>110</y><w>210</w><h>150</h></coordinates><panel_attributes>Plateau
+--
+- taille : integet
+- - cases [][] : integer
+
+--
++ decouvrirCase()
++ marquerCase()
++ retirerDrapeau()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>160</y><w>350</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+m1=1.1</panel_attributes><additional_attributes>330;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>390</y><w>210</w><h>150</h></coordinates><panel_attributes>Case
+--
+- contenu : string
+- etat (couvert, decouvert, marque) : string
+
+--
++ decouvrirCase()
++ marquerCase()
++ retirerDrapeau()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>250</y><w>50</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
+m1=n.1</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>250</y><w>160</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
+m1=1.1</panel_attributes><additional_attributes>140;140;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>390</y><w>210</w><h>150</h></coordinates><panel_attributes>Chronometre
+--
+- tempsEcoule : time
+
+--
++ demarrer()
++ arreter()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>390</y><w>210</w><h>150</h></coordinates><panel_attributes>CompteurDrapeau
+--
+- nbDrapeau : integer
+
+--
++ incrementer()
++ decrementer()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>700</y><w>210</w><h>150</h></coordinates><panel_attributes>Joueur
+--
+- nom : string
+
+--
++ decouvrirCase()
++ marquerCase()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>250</y><w>140</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
+m1=1.1</panel_attributes><additional_attributes>10;140;120;10</additional_attributes></element></diagram>
