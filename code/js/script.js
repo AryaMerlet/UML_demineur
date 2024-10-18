@@ -22,9 +22,39 @@ document.addEventListener("DOMContentLoaded", function () {
   lives = document.querySelectorAll("#hearts img").length;
 });
 
+
+let chronoInterval;
+let seconds = 0;
+let minutes = 0;
+
+function startChrono() {
+    chronoInterval = setInterval(updateChrono, 1000);
+}
+
+function updateChrono() {
+    seconds++;
+    if (seconds === 60) {
+        seconds = 0;
+        minutes++;
+    }
+
+    // Update clock image
+    const clockImage = document.querySelector("#chrono img");
+    clockImage.src = `medias/textures/clock/clock_${String(seconds).padStart(2, '0')}.png`;
+
+    // Update time text
+    const chronoTime = document.getElementById("chrono-time");
+    chronoTime.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+function stopChrono() {
+    clearInterval(chronoInterval);
+}
+
 function CaseBreak(r, c, event) {
   if (is_init == false) {
     Initialiser(r, c);
+    startChrono();
   }
   var caseClicked = document.getElementById(r + ";" + c);
 
@@ -132,6 +162,7 @@ function RefreshBombCount() {
   bombCounter.textContent = totalMines - revealedMines - flaggedCells;
   if (totalMines - revealedMines - correctFlags === 0) {
     victoire();
+    stopChrono();
   }
 }
 function revealneighbours(r, c) {
@@ -361,6 +392,7 @@ function victoire() {
 }
 
 function defaite() {
+  stopChrono();
   // Disable all buttons
   document.querySelectorAll("button").forEach(function (button) {
       button.disabled = true;

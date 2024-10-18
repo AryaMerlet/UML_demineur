@@ -12,6 +12,11 @@
 </head>
 
 <body class="bg-blur h-screen flex flex-col justify-between items-center overflow-hidden"></body>
+     <!-- Chronomètre -->
+     <div id="chrono" class="absolute top-2 right-2 flex items-center">
+        <img src="medias/textures/clock/clock_00.png" alt="Clock" class="w-8 h-8 mr-2">
+        <span id="chrono-time" class="text-white text-xl font-bold">00:00</span>
+    </div>
 
     <!-- Titre -->
     <h1 class="text-6xl font-bold text-white mt-8">DES MINEURS</h1>
