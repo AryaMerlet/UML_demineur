@@ -1,0 +1,15 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>Relation</id><coordinates><x>550</x><y>320</y><w>30</w><h>560</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;540</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>510</x><y>300</y><w>100</w><h>30</h></coordinates><panel_attributes>_:Joueur_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>730</x><y>300</y><w>100</w><h>30</h></coordinates><panel_attributes>Démineur</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>320</y><w>30</w><h>560</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;540</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>340</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+Appuie sur le bouton de difficulté</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>380</y><w>250</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+le plateau augmente de taille
+</panel_attributes><additional_attributes>10;20;230;20</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>500</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+le nombre de mine diminue</panel_attributes><additional_attributes>10;20;230;20</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>400</y><w>250</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+le nombre de mine augmente
+</panel_attributes><additional_attributes>10;20;230;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>420</x><y>370</y><w>550</w><h>190</h></coordinates><panel_attributes>alt
+--
+
+
+
+si la difficulté est au max
+-.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>480</y><w>270</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+le plateau retourne à la plus petite difficulté
+</panel_attributes><additional_attributes>20;20;240;20</additional_attributes></element></diagram>

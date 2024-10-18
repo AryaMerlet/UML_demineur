@@ -1,0 +1,64 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLGeneric</id><coordinates><x>380</x><y>140</y><w>100</w><h>30</h></coordinates><panel_attributes>_:Joueur_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>600</x><y>140</y><w>100</w><h>30</h></coordinates><panel_attributes>Démineur</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>220</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+clic gauche sur une case</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>460</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+fin de la partie</panel_attributes><additional_attributes>10;20;230;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>440</y><w>250</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+la case découverte contient une mine
+</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>160</y><w>30</w><h>910</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;890</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>160</y><w>30</w><h>920</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;900</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>510</y><w>250</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+la case découverte contient un chiffre
+</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>570</y><w>250</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+la case découverte est vide
+</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>600</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+découvre les cases aux alentours</panel_attributes><additional_attributes>10;20;230;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>310</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=-&gt;
+découvre une case</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>290</x><y>370</y><w>500</w><h>270</h></coordinates><panel_attributes>alt
+--
+
+
+
+
+
+
+-.
+
+
+
+
+-.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>640</x><y>520</y><w>20</w><h>20</h></coordinates><panel_attributes>type=termination</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>300</x><y>570</y><w>430</w><h>70</h></coordinates><panel_attributes>loop</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLFrame</id><coordinates><x>200</x><y>250</y><w>680</w><h>440</h></coordinates><panel_attributes>alt
+--
+si la case ne contient pas de drapeau
+-.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
