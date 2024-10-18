@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   lives = document.querySelectorAll("#hearts img").length;
 });
 
+var lost = 0;
 
 let chronoInterval;
 let seconds = 0;
@@ -328,6 +329,9 @@ function playExplosionAnimation(r, c) {
 }
 
 function victoire() {
+  if (lost == 1){
+    return;
+  }
   document.querySelectorAll("button").forEach(function (button) {
     button.disabled = true;
   });
@@ -399,6 +403,8 @@ function defaite() {
   });
   desactiver_click_droit = true;
 
+  lost = 1;
+  
   // Create the defeat overlay
   var defeatOverlay = document.createElement("div");
   defeatOverlay.style.position = "fixed";
