@@ -27,8 +27,7 @@
             <div class="flex justify-between">
                 <div class="flex items-center pb-1" id="hearts">
                     <?php
-                    $options = file_get_contents('option.txt');
-                    $difficulty = json_decode($options, true)['lives'] ?? '0';
+                    $difficulty = isset($_COOKIE['difficulty']) ? $_COOKIE['difficulty'] : 'Easy';
                     for ($i = 0; $i < $difficulty; $i++) {
                         echo '<img src="medias/textures/heart_full.png" class="w-6 h-6">';
                     }
@@ -41,7 +40,6 @@
             </div>
             <table class="table-auto border-collapse bg-gray-700">
                 <?php
-                $difficulty = json_decode($options, true)['difficulty'] ?? 'Easy';
 
                 if ($difficulty == "Easy") {
                     $row = 9;

@@ -24,17 +24,15 @@ if ($difficulty === null && $lives === null) {
     exit;
 }
 
-// Sauvegarder les données dans un fichier
-$options = [];
+// Sauvegarder les données dans des cookies
 if ($difficulty !== null) {
-    $options['difficulty'] = $difficulty;
+    setcookie('difficulty', $difficulty, time() + (86400 * 30), "/"); // Cookie valable 30 jours
 }
 if ($lives !== null) {
-    $options['lives'] = $lives;
+    setcookie('lives', $lives, time() + (86400 * 30), "/"); // Cookie valable 30 jours
 }
-
-file_put_contents('option.txt', json_encode($options));
 
 // Retourner les données reçues
 http_response_code(200); // OK
-echo json_encode(['success' => true, 'options' => $options]);
+echo json_encode(['success' => true, 'options' => ['difficulty' => $difficulty, 'lives' => $lives]]);
+?>
