@@ -1,3 +1,15 @@
+<?php 
+session_start();
+if (!isset($_SESSION['difficulty'])) {
+    $_SESSION['difficulty'] = 'Easy';
+}
+
+if (!isset($_SESSION['lives'])) {
+    $_SESSION['lives'] = 1;
+}
+$difficulty = $_SESSION['difficulty'];
+$lives = $_SESSION['lives'];
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="medias/favicon.ico" type="image/x-icon">
 
     <script src="js/script.js"></script>
     <title>Partie en cours - Démineur</title>
@@ -27,9 +40,8 @@
             <div class="flex justify-between">
                 <div class="flex items-center pb-1" id="hearts">
                     <?php
-                    $options = file_get_contents('option.txt');
-                    $difficulty = json_decode($options, true)['lives'] ?? '0';
-                    for ($i = 0; $i < $difficulty; $i++) {
+
+                    for ($i = 0; $i < $lives; $i++) {
                         echo '<img src="medias/textures/heart_full.png" class="w-6 h-6">';
                     }
                     ?>
@@ -41,7 +53,6 @@
             </div>
             <table class="table-auto border-collapse bg-gray-700">
                 <?php
-                $difficulty = json_decode($options, true)['difficulty'] ?? 'Easy';
 
                 if ($difficulty == "Easy") {
                     $row = 9;

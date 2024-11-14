@@ -1,8 +1,13 @@
 <?php 
 // options_save.php
-$options = file_get_contents('option.txt');
-$difficulty = json_decode($options, true)['difficulty'] ?? 'Easy';
-$lives = json_decode($options, true)['lives'] ?? 1;
+session_start();
+if (!isset($_SESSION['difficulty']) || !isset($_SESSION['lives'])) {
+    $_SESSION['difficulty'] = 'easy';
+    $_SESSION['lives'] = 1;
+    
+}
+$difficulty = $_SESSION['difficulty'];
+$lives = $_SESSION['lives'];
 
 ?>
 <!DOCTYPE html>
@@ -10,7 +15,9 @@ $lives = json_decode($options, true)['lives'] ?? 1;
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="medias/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paramètres des mineurs - Ajustez la difficulté et le nombre de vies pour le jeu.">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title> Parametres des mineurs</title>

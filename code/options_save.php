@@ -1,4 +1,5 @@
 <?php
+session_start();
 // options_save.php
 
 // Récupérer le contenu brut de la requête POST
@@ -27,14 +28,11 @@ if ($difficulty === null && $lives === null) {
 // Sauvegarder les données dans un fichier
 $options = [];
 if ($difficulty !== null) {
-    $options['difficulty'] = $difficulty;
+    $_SESSION['difficulty'] = $difficulty;
 }
 if ($lives !== null) {
-    $options['lives'] = $lives;
+    $_SESSION['lives'] = $lives;
 }
-
-file_put_contents('option.txt', json_encode($options));
-
 // Retourner les données reçues
 http_response_code(200); // OK
 echo json_encode(['success' => true, 'options' => $options]);
